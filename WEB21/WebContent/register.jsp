@@ -1,13 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html>
 <html>
 <head></head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>会员注册</title>
 <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
-<script src="js/jquery-1.11.3.min.js" type="text/javascript"></script>
-<script src="js/bootstrap.min.js" type="text/javascript"></script>
+<!-- <script src="js/jquery-1.11.3.min.js" type="text/javascript"></script>
+ <script src="js/bootstrap.min.js" type="text/javascript"></script> -->
 <!-- 引入自定义css文件 style.css -->
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 
@@ -29,21 +34,67 @@ font {
 	padding: 0 10px;
 }
 </style>
-<script type="text/javascript">
-	//页面加载完毕
-	$(function(){
-		$('#username').blur(function(){
-			var usernameInput = $(this).val();
-			alert(usernameInput);
+<c:set var="ctx" value="${pageContext.request.contextPath}" /> 
+<base href="<%=basePath%>">
+	<script type="text/javascript">
+	
+	function createXMLHttpRequest() {
+	try {
+		return new XMLHttpRequest();//大多数浏览器
+	} catch (e) {
+		try {
+			return ActvieXObject("Msxml2.XMLHTTP");//IE6.0
+		} catch (e) {
+			try {
+				return ActvieXObject("Microsoft.XMLHTTP");//IE5.5及更早版本	
+			} catch (e) {
+				alert("哥们儿，您用的是什么浏览器啊？");
+				throw e;
+			}
+		}
+	}
+}
+	window.onload = function(){
+	//监听用户名失去焦点事件
+	var userEle = document.getElementById("username");
+	userEle.onblur = function(){
+		//得到异步对象
+		xmlHttp = createXMLHttpRequest();
+		//打开
+		xmlHttp.open("POST","<c:url value='/checkUsername'/>",true);
+		//设置头
+		xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		//发送内容
+		xmlHttp.send("username=" + userEle.value);
+		xmlHttp.onreadystatechange = function(){
 		
-	
-		});
+			if(xmlHttp.readyState == 4 && xmlHttp.status == 200){
+			
+				var text = xmlHttp.responseText;
+				var spanT = document.getElementById("usernameTrue");
+				var spanE = document.getElementById("usernameError");
+				if(text == "1"){
+					
+					spanT.innerHTML = "";
+					spanE.innerHTML = "用户名已存在";
+					
+				}else{
+					spanE.innerHTML = "";
+					spanT.innerHTML = "用户名可用";
+					
+				}
+				
+			
+			
+			}
 		
+		
+		};
+	};
 	
-	});
+	};
 	
-
-</script>
+	</script>
 </head>
 <body>
 
@@ -63,7 +114,10 @@ font {
 						<div class="col-sm-6">
 							<input type="text" class="form-control" id="username"
 								placeholder="请输入用户名">
+								
 						</div>
+						<span style="color: green" id="usernameTrue"></span>
+						<span style="color: red" id="usernameError"></span>
 					</div>
 					<div class="form-group">
 						<label for="inputPassword3" class="col-sm-2 control-label">密码</label>

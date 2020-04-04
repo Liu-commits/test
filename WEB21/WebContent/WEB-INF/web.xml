@@ -77,6 +77,13 @@
     <servlet-name>ProductListServlet</servlet-name>
     <servlet-class>com.itheima.web.ProductListServlet</servlet-class>
   </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>CheckUsername</servlet-name>
+    <servlet-class>com.itheima.web.CheckUsername</servlet-class>
+  </servlet>
+
 
 
   <servlet-mapping>
@@ -90,5 +97,9 @@
   <servlet-mapping>
     <servlet-name>ProductListServlet</servlet-name>
     <url-pattern>/productList</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CheckUsername</servlet-name>
+    <url-pattern>/checkUsername</url-pattern>
   </servlet-mapping>
 </web-app>

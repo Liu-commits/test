@@ -7,6 +7,7 @@ import org.junit.Test;
 import com.itheima.dao.ProductDao;
 import com.itheima.service.ProductService;
 import com.itheima.vo.PageBean;
+import com.itheima.web.CheckUsername;
 
 
 public class Test01 {
@@ -25,6 +26,15 @@ public class Test01 {
 		//一页 四条
 		PageBean pageBean = new ProductService().findPageBean(1, 4);
 		System.out.println(pageBean);
+	}
+
+	@Test
+	
+	public void test02() throws SQLException {
+		//一页 四条
+		new CheckUsername();
+		
+		
 	}
 
 }
