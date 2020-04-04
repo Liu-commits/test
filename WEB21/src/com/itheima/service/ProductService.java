@@ -36,6 +36,11 @@ public class ProductService {
 		pageBean.setProductList(productList);
 		return pageBean;
 	}
+
+	public List<Product> finProductByWord(String word) throws SQLException {
+		return dao.finProductByWord(word);
+		
+	}
 	
 
 }
