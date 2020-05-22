@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../js/jquery-1.8.3.js"></script>
+    <title>点我有惊喜</title>
+    <script>
+        // $(function() {
+        //     document.getElementById('btn').onclick=function(){
+        //         location.href='jingxi.html'
+        //     }
+        // })
+        $(function() {
+            $("#btn").click(function(){
+            location.href='jingxi.html'
+            })
+        })
+        
+    </script>
+    <style>
+        div{
+            width: 400px;
+            height: 250px;
+            text-align: center;
+            margin: auto;
+        }
+        #btn{
+            width: 400px;
+            height: 250px;
+        }
+    </style>
+</head>
+<body>
+   <div><input type="button" value="点击我有惊喜！" id="btn" style="color: rgb(64, 214, 109);font-size: 30px;"></div>
+</body>
+</html>

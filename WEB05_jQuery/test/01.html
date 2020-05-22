@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>测试</title>
+    </head>
+    <script src="../js/jquery-1.8.3.js"></script>
+    <script>
+        $(function(){
+            // document.getElementById('js').onclick=function(){
+            //     document.getElementById('sp1').innerHTML="haha"
+            // }
+            $("#jq").click(function(){
+                
+                $("#sp1").html("hehe")
+            
+            });
+        })
+        
+    </script>
+    <body>
+        <input type="button" value="js追加" style="width: 100px;" id="js">
+        <input type="button" value="jq追加" style="width: 100px;" id="jq"></br>
+        <span id="sp1">你好帅</span>
+    </body>
+</html>
