@@ -1,10 +1,11 @@
 这是练习文件<br/>
 --
-WEB21
+WEB
 ---
 添加分页<br/>
 异步验证用户名<br/>
 站内搜索<br/>
+${pageContext.request.contextPath }获取应用名称<br/>
 
 RabbitMQ
 ---
