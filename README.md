@@ -6,6 +6,7 @@ WEB
 异步验证用户名<br/>
 站内搜索<br/>
 ${pageContext.request.contextPath }获取应用名称<br/>
+implements HttpSessionListener可以实现网站访问数统计<br/>
 
 RabbitMQ
 ---
