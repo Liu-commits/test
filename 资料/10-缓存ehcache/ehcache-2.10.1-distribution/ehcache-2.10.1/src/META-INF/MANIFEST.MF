@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+BuildInfo-Revision: 10073
+Terracotta-ProjectStatus: Supported
+BuildInfo-URL: https://svn.terracotta.org/repo/ehcache/tags/ehcache-2.
+ 10.1
+Terracotta-Description: Ehcache is an open source, standards-based cac
+ he used to boost performance,
+  offload the database and simplify sca
+ lability. Ehcache is robust, proven and full-featured and
+  this has 
+ made it the most widely-used Java-based cache.
+BuildInfo-Timestamp: 20151015-050004
+Terracotta-Name: ehcache
+License: Apache Software License, Version 2.0
+
