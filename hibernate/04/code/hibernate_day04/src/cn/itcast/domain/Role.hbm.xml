@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cn.itcast.domain" >
+	<class name="Role" table="sys_role" >
+		<id name="role_id"  >
+			<generator class="native"></generator>
+		</id>
+		<property name="role_name"  ></property>
+		<property name="role_memo"  ></property>
+
+	<!-- 使用inverse属性
+			true: 放弃维护外键关系
+			false(默认值):维护关系
+			
+		结论: 将来在开发中,如果遇到多对多关系.一定要选择一方放弃维护关系.
+			 一般谁来放弃要看业务方向. 例如录入员工时,需要为员工指定所属角色.
+			 那么业务方向就是由员工维护角色. 角色不需要维护与员工关系.角色放弃维护
+		 -->		
+		<set name="users" table="sys_user_role" inverse="true" >
+			<key column="role_id" ></key>
+			<many-to-many class="User" column="user_id" ></many-to-many>
+		</set>
+	</class>
+</hibernate-mapping>

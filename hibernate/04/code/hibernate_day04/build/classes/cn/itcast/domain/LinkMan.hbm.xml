@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cn.itcast.domain" >
+	<class name="LinkMan" table="cst_linkman" >
+		<id name="lkm_id"  >
+			<generator class="native"></generator>
+		</id>
+		<property name="lkm_gender"  ></property>
+		<property name="lkm_name"  ></property>
+		<property name="lkm_phone"  ></property>
+		<property name="lkm_email"  ></property>
+		<property name="lkm_qq"  ></property>
+		<property name="lkm_mobile"  ></property>
+		<property name="lkm_memo"  ></property>
+		<property name="lkm_position"  ></property>
+		<!-- 
+		fetch 决定加载的sql语句
+			select: 使用单表查询
+			join : 多表查询
+		lazy  决定加载时机
+			false: 立即加载
+			proxy: 由customer的类级别加载策略决定.
+		 -->
+		<many-to-one name="customer" column="lkm_cust_id" class="Customer" fetch="join" lazy="proxy"  >
+		</many-to-one>
+	</class>
+</hibernate-mapping>

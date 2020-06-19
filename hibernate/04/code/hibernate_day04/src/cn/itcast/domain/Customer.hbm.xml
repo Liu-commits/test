@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cn.itcast.domain" >
+	<class name="Customer" table="cst_customer" lazy="false" >
+		<id name="cust_id"  >
+			<generator class="native"></generator>
+		</id>
+		<property name="cust_name" column="cust_name" ></property>
+		<property name="cust_source" column="cust_source" ></property>
+		<property name="cust_industry" column="cust_industry" ></property>
+		<property name="cust_level" column="cust_level" ></property>
+		<property name="cust_linkman" column="cust_linkman" ></property>
+		<property name="cust_phone" column="cust_phone" ></property>
+		<property name="cust_mobile" column="cust_mobile" ></property>
+	
+	<!-- 
+		lazy属性: 决定是否延迟加载
+			true(默认值): 延迟加载,懒加载
+			false: 立即加载
+			extra: 极其懒惰
+		fetch属性: 决定加载策略.使用什么类型的sql语句加载集合数据
+			select(默认值): 单表查询加载
+			join: 使用多表查询加载集合
+			subselect:使用子查询加载集合
+	 -->
+	 <!-- batch-size: 抓取集合的数量为3.
+	 		抓取客户的集合时,一次抓取几个客户的联系人集合.
+	  -->
+		<set name="linkMens" batch-size="3"  >
+			<key column="lkm_cust_id" ></key>
+			<one-to-many class="LinkMan" />
+		</set>
+		
+	
+	</class>
+</hibernate-mapping>
