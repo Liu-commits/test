@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cn.itcast.domain" >
+	<class name="Customer" table="cst_customer" >
+		<id name="cust_id"  >
+			<generator class="native"></generator>
+		</id>
+		<property name="cust_name" column="cust_name" ></property>
+		<property name="cust_source" column="cust_source" ></property>
+		<property name="cust_industry" column="cust_industry" ></property>
+		<property name="cust_level" column="cust_level" ></property>
+		<property name="cust_linkman" column="cust_linkman" ></property>
+		<property name="cust_phone" column="cust_phone" ></property>
+		<property name="cust_mobile" column="cust_mobile" ></property>
+	
+		<!-- 集合,一对多关系,在配置文件中配置 -->
+		<!-- 
+			name属性:集合属性名
+			column属性: 外键列名
+			class属性: 与我关联的对象完整类名
+		 -->
+		 <!-- 
+		 	级联操作:	cascade
+		 		save-update: 级联保存更新
+		 		delete:级联删除
+		 		all:save-update+delete
+		 	级联操作: 简化操作.目的就是为了少些两行代码.
+		  -->
+		  <!-- inverse属性: 配置关系是否维护. 
+		  		true: customer不维护关系
+		  		false(默认值): customer维护关系
+		  		
+		  	inverse属性: 性能优化.提高关系维护的性能.
+		  	原则: 无论怎么放弃,总有一方必须要维护关系.
+		  	一对多关系中: 一的一方放弃.也只能一的一方放弃.多的一方不能放弃.
+		  -->
+		<set name="linkMens" inverse="true" cascade="delete"  >
+			<key column="lkm_cust_id" ></key>
+			<one-to-many class="LinkMan" />
+		</set>
+		
+	
+	</class>
+</hibernate-mapping>
