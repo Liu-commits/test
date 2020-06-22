@@ -1,0 +1,48 @@
+struts_day02
+
+1.结果集
+	转发
+	重定向
+	转发Action
+	重定向Action
+
+2.获得原生ServletAPI
+	ActionContext 数据中心
+		|-request
+		|-response
+		|-ServletContext
+		|-requestScope
+		|-sessionScope
+		|-applicationScope
+		|-params
+		|-attrs
+		....
+	//获得ActionContext
+	ActionContext.getContext();	
+		|-requestScope
+		|-sessionScope
+		|-applicationScope
+		|-params
+		|-attrs
+	//获得ActionContext中原生对象的工具类
+	ServletActionContext
+		|-request
+		|-response
+		|-ServletContext
+	
+3.参数封装
+	属性驱动
+		|-Action准备与参数键同名属性
+	对象驱动
+		|-Action准备与参数键同名属性. xxx.yyy
+	模型驱动
+		|- 1.实现ModelDriven接口
+		|- 2.实现getModel方法.返回需要封装参数的对象
+		
+4.复杂参数封装
+	List集合
+		提交键: list		
+				list[index]
+	Map结合
+		提交键: map['key']
+				
