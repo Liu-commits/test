@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	
+	<!-- i18n:国际化. 解决post提交乱码 -->
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant>
+	<!-- 指定反问action时的后缀名 
+		http://localhost:8080/struts2_day01/hello/HelloAction.do
+	-->
+	<constant name="struts.action.extension" value="action"></constant>
+	<!-- 指定struts2是否以开发模式运行
+			1.热加载主配置.(不需要重启即可生效)
+			2.提供更多错误信息输出,方便开发时的调试
+	 -->
+	<constant name="struts.devMode" value="true"></constant>
+	
+	
+
+	<!-- package:将Action配置封装.就是可以在Package中配置很多action.
+			name属性: 给包起个名字,起到标识作用.随便起.不能其他包名重复.
+			namespace属性:给action的访问路径中定义一个命名空间
+			extends属性: 继承一个 指定包
+			abstract属性:包是否为抽象的; 标识性属性.标识该包不能独立运行.专门被继承
+	  -->
+	<package name="hello" namespace="/hello" extends="struts-default" >
+		<!-- action元素:配置action类
+				name属性: 决定了Action访问资源名.
+				class属性: action的完整类名
+				method属性: 指定调用Action中的哪个方法来处理请求
+		 -->
+		<action name="HelloAction" class="cn.itheima.a_hello.HelloAction" method="hello" >
+			<!-- result元素:结果配置 
+					name属性: 标识结果处理的名称.与action方法的返回值对应.
+					type属性: 指定调用哪一个result类来处理结果,默认使用转发.
+					标签体:填写页面的相对路径
+			-->
+			<result name="success" type="dispatcher" >/hello.jsp</result>
+		</action>
+	</package>
+	<!-- 引入其他struts配置文件 -->
+	<include file="cn/itheima/b_dynamic/struts.xml"></include>
+	<include file="cn/itheima/c_default/struts.xml"></include>
+</struts>

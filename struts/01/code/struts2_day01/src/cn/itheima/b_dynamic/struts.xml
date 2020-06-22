@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+		<!-- 配置动态方法调用是否开启常量
+				默认是关闭的,需要开启
+		 -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="false"></constant>
+	
+		<package name="dynamic" namespace="/dynamic" extends="struts-default" >
+			<!-- 动态方法调用方式2:通配符方式
+				 使用{1} 取出第一个星号通配的内容
+			  -->
+			<action name="Demo1Action_*" class="cn.itheima.b_dynamic.Demo1Action" method="{1}" >
+				<result name="success" >/hello.jsp</result>
+			</action>
+		</package>
+</struts>
