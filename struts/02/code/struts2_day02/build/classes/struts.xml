@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="result" namespace="/" extends="struts-default" >
+	<!--  转发 -->
+		<action name="Demo1Action" class="cn.itheima.a_result.Demo1Action" method="execute" >
+			<result name="success" type="dispatcher" >/hello.jsp</result>
+		</action>
+	<!-- 重定向 -->
+		<action name="Demo2Action" class="cn.itheima.a_result.Demo2Action" method="execute" >
+			<result name="success" type="redirect" >/hello.jsp</result>
+		</action>
+	<!-- 转发到Action -->
+		<action name="Demo3Action" class="cn.itheima.a_result.Demo3Action" method="execute" >
+			 <result name="success" type="chain">
+			 		<!-- action的名字 -->
+	             <param name="actionName">Demo1Action</param>
+	             	<!-- action所在的命名空间 -->
+	             <param name="namespace">/</param>
+	         </result>
+		</action>
+		<!-- 重定向到Action -->
+		<action name="Demo4Action" class="cn.itheima.a_result.Demo4Action" method="execute" >
+			<result  name="success"  type="redirectAction">
+				 <!-- action的名字 -->
+	             <param name="actionName">Demo1Action</param>
+	             <!-- action所在的命名空间 -->
+	             <param name="namespace">/</param>
+            </result>
+		</action>
+	</package>
+	<include file="cn/itheima/b_api/struts.xml"></include>
+	<include file="cn/itheima/c_param/struts.xml"></include>
+</struts>
