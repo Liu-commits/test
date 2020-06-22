@@ -1,0 +1,41 @@
+struts2_day03
+
+
+一.ognl表达式
+	准备工作:
+		1.导包 - 包含在struts2包中
+		2.OGNLContext
+			|-Root		任意对象
+			|-Context	Map
+	语法:
+		1.取值
+		2.赋值
+		3.调用方法
+		4.调用静态方法
+		5.创建List|Map
+		
+二.OGNL与Struts2的整合
+	
+	Struts2为ognl准备了一个ValueStack对象,作为ognl取值范围
+	
+	ValueStack
+			|-Root		栈
+			|-Context   ActionContext(数据中心)
+	
+	栈 => 默认放置当前访问的Action对象
+	ActionContext 
+			|- request
+			|- response
+			|- servletContext
+			|- requestScope
+			|- sessionScope
+			|- applicationScope
+			|- parameters
+			|- attrs
+			......
+OGNL与Struts2结合的应用
+	|- 参数接收 => struts2中的参数是交给ognl引擎处理
+	|- 配置文件中 => ${ognl表达式}
+	|- 标签(今天讲)
+	
+	
