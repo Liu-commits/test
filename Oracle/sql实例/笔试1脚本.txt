@@ -1,0 +1,10 @@
+create table test1
+(id int primary key,
+ name varchar(20),
+ money int);
+
+insert into test1 values(1,'Tom',1000);
+insert into test1 values(2,'Mary',2000);
+insert into test1 values(3,'Mike',3000);
+insert into test1 values(4,'Jeff',4000);
+commit;

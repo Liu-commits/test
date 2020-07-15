@@ -1,0 +1,15 @@
+ create table pm_ci
+ (ci_id varchar(20) primary key,
+  stu_ids varchar(100));
+
+insert into pm_ci values('1','1,2,3,4');
+insert into pm_ci values('2','1,4');
+
+ create table pm_stu
+ (stu_id varchar(20) primary key,
+  stu_name varchar(20));
+insert into pm_stu values('1','张三');
+insert into pm_stu values('2','李四');
+insert into pm_stu values('3','王五');
+insert into pm_stu values('4','赵六');
+commit;
